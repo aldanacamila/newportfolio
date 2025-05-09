@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PH Works | Kozmika</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Kozmika</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="galeria">
+    <h3>En esta galería puede ver una selección de mi trabajo. Espero que la disfrute.</h3>
+
+    <div class="collage">
+      <img src="img_ph/ph1.jpg" alt="Foto 1" class="collage-img" data-index="0">
+      <img src="img_ph/ph2.jpg" alt="Foto 2" class="collage-img" data-index="1">
+      <img src="img_ph/ph3.jpg" alt="Foto 3" class="collage-img" data-index="2">
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <button class="close">&times;</button>
+      <button class="nav prev">←</button>
+      <img src="" alt="Full" id="lightbox-img">
+      <button class="nav next">→</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Kozmika</p>
+    <p>2025 Derechos Reservados</p>
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.collage-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    let currentIndex = 0;
+
+    function showLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = images[index].src;
+      lightbox.style.display = 'flex';
+    }
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => showLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    });
+  </script>
+</body>
+</html>

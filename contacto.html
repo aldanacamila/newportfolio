@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Kozmika</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="contacto-container">
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de Kozmika" class="fade-in">
+        </div>
+        <div class="formulario">
+            <form id="contactForm">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        
+                <button type="submit">Enviar</button>
+                <p id="mensajeEnviado" class="enviado">¡Mensaje enviado!</p>
+            </form>
+        </div>
+        
+    </main>
+    
+    <footer>
+        <p>Kozmika</p>
+        <p>2025 Derechos Reservados</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href]').forEach(link => {
+          link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#') || this.target === '_blank') return;
+      
+            e.preventDefault();
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+              window.location.href = href;
+            }, 500);
+          });
+        });
+        const form = document.getElementById('contactForm');
+        const mensaje = document.getElementById('mensajeEnviado');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+    
+            // Simula el envío del formulario
+            mensaje.classList.add('mostrar');
+    
+            // Borra los datos después de 2 segundos
+            setTimeout(() => {
+                mensaje.classList.remove('mostrar');
+                form.reset();
+            }, 2000);
+        });
+    </script>
+    
+      
+</body>
+</html>

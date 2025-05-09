@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs | Kozmika</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Kozmika</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="galeria">
+        <h3>En esta galería puede ver una selección de mi trabajo. Espero que la disfrute.</h3>
+        <div class="carrusel">
+            <div class="slide active">Graph 1</div>
+            <div class="slide">Graph 2</div>
+            <div class="slide">Graph 3</div>
+            <button class="prev">←</button>
+            <button class="next">→</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Kozmika</p>
+        <p>2025 Derechos Reservados</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        next.addEventListener('click', () => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        });
+
+        prev.addEventListener('click', () => {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        });
+    </script>
+</body>
+</html>
